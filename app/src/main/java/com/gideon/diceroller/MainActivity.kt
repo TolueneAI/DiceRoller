@@ -21,10 +21,16 @@ class MainActivity : AppCompatActivity() {
         diceImage = findViewById(R.id.dice_image)
     }
 
+
+    /**
+     * Roll the dice and update the screen with the result.
+     */
     private fun rollDice() {
 
 
         val randomInt = Random.nextInt(6) + 1
+
+        // Determine which drawable resource ID to use based on the dice roll
         val drawableResource = when (randomInt) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
@@ -34,7 +40,11 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
 
+        // Update the ImageView with the correct drawable resource ID
         diceImage.setImageResource(drawableResource)
+
+        // Update the content description
+        diceImage.contentDescription = randomInt.toString()
 
 
     }
